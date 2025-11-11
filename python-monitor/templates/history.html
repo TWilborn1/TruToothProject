@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<section>
+  <h3>Recent Events</h3>
+  <table>
+    <thead><tr><th>Time (UTC)</th><th>Name</th><th>Address</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for r in records %}
+      <tr>
+        <td>{{ r.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        <td>{{ r.name }}</td>
+        <td><a href="{{ url_for('device_detail', addr=r.address) }}">{{ r.address }}</a></td>
+        <td>{{ r.status }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

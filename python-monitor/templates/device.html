@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+<section>
+  <h3>Device</h3>
+  <p><strong>Name:</strong> {{ name }}</p>
+  <p><strong>Address:</strong> {{ addr }}</p>
+  <p><strong>Status:</strong> {{ status }}</p>
+
+  <form action="{{ url_for('rename', addr=addr) }}" method="post" style="margin-top:1rem;">
+    <label>Rename</label>
+    <input name="new_name" placeholder="New name" value="{{ name }}">
+    <button type="submit">Save</button>
+  </form>
+
+  <form action="{{ url_for('watch', addr=addr) }}" method="post" style="margin-top:1rem;">
+    <label>Auto-Reconnect</label>
+    <input type="checkbox" name="watched" value="on" {% if watched %}checked{% endif %}>
+    <button type="submit">Apply</button>
+  </form>
+
+  <h4 style="margin-top:2rem;">Connection History</h4>
+  <table>
+    <thead><tr><th>Time (UTC)</th><th>Status</th><th>Name</th></tr></thead>
+    <tbody>
+      {% for r in history %}
+      <tr>
+        <td>{{ r.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        <td>{{ r.status }}</td>
+        <td>{{ r.name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

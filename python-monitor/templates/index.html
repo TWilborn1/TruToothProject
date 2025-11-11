@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  <form action="{{ url_for('update_settings') }}" method="post" style="display: flex; align-items: center; gap: 10px;">
+    <label for="scan_interval"><strong>Scan Interval (seconds):</strong></label>
+    <input id="scan_interval" name="scan_interval" type="number" min="3" max="60" value="{{ scan_interval }}">
+    <button type="submit">Save</button>
+    <small>Last scan: {{ last_scan }}</small>
+  </form>
+</div>
+
+<h3>Devices</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody id="device-rows">
+  </tbody>
+</table>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

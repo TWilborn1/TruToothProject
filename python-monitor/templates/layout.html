@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TruTooth</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background: #ffffff;
+      width: 100%;
+      padding: 1rem 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    header h2 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    main {
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 900px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+    }
+
+    th {
+      background-color: #f0f2f5;
+      font-weight: 600;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    button, input[type=number], input[type=text] {
+      font-size: 15px;
+      padding: 6px 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
+    }
+
+    small {
+      color: #666;
+      margin-left: 10px;
+    }
+
+    a.view-link {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a.view-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>TruTooth</h2>
+    <nav>
+      <a href="{{ url_for('index') }}">Dashboard</a>
+      <a href="{{ url_for('history') }}">History</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
